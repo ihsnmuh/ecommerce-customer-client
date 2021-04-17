@@ -1,0 +1,69 @@
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+.pageDefault {
+  overflow: auto;
+}
+
+.bold-font {
+  font-weight: bold;
+}
+
+body {
+  background-color: #fdfde3;
+}
+
+#body-card {
+  background-color: #fdfde3;
+}
+
+.garis {
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+.card-header {
+  font-weight: bold;
+}
+
+.border-radius {
+  border-radius: 10px;
+}
+
+h4 {
+  font-weight: 700;
+  color: white;
+}
+
+.huruf-biru {
+  font-size: 16px;
+  color: #0d6efd;
+}
+
+#cart-list {
+  overflow: auto;
+  height: 60vh;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffd968;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #FFC107;
+}
