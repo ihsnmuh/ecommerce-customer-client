@@ -13,7 +13,7 @@
         <td>{{cartitem.quantity}}</td>
         <td>{{cartitem.quantity * cartitem.Product.price}}</td>
         <td>
-            <button class="btn btn-dark btn-sm">
+            <button class="btn btn-dark btn-sm" @click.prevent="editQuantityCart">
             <i class="bi bi-pencil-square"></i> Edit Quantity
             </button><br>
             <button class="btn btn-danger btn-sm" @click.prevent="deleteCart">
@@ -33,6 +33,9 @@ export default {
         id: +this.cartitem.id
       }
       this.$store.dispatch('deleteCart', payload)
+    },
+    editQuantityCart () {
+      this.$router.push(`/edit/${this.cartitem.id}`)
     }
   }
 }

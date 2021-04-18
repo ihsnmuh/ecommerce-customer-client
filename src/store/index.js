@@ -8,7 +8,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     products: [],
-    cartitems: []
+    cartitems: [],
+    cartitem: {}
   },
   mutations: {
     FETCH_PRODUCTS (state, data) {
@@ -16,6 +17,9 @@ export default new Vuex.Store({
     },
     FETCH_CARTITEMS (state, data) {
       state.cartitems = data
+    },
+    FETCH_CART_ONE (state, data) {
+      state.cartitem = data
     }
   },
   actions: {
@@ -43,6 +47,22 @@ export default new Vuex.Store({
         .then(({ data }) => {
           console.log(data)
           context.commit('FETCH_CARTITEMS', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    fetchCartOne (context, id) {
+      axios
+        .get(`/carts/${id}`, {
+          headers: {
+            access_token: localStorage.access_token
+          }
+        })
+        .then(({ data }) => {
+          console.log(data)
+          context.commit('FETCH_CART_ONE', data)
         })
         .catch(err => {
           console.log(err)
@@ -102,6 +122,30 @@ export default new Vuex.Store({
           context.dispatch('fetchCartItems')
           // balik lagi ke cartpage
           router.push('/cart').catch(() => {})
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    updateCart (context) {
+      // console.log(context.state.cartitem)
+      const newQuantity = {
+        id: context.state.cartitem.id,
+        quantity: context.state.cartitem.quantity
+      }
+
+      axios
+        .put(`/carts/${newQuantity.id}`, newQuantity, {
+          headers: {
+            access_token: localStorage.access_token
+          }
+        })
+        .then(({ data }) => {
+          console.log(data, '<<<<<< didata')
+          // console.log(`${data.}`);
+          context.dispatch('fetchCartItems')
+          router.push('/cart')
         })
         .catch(err => {
           console.log(err)

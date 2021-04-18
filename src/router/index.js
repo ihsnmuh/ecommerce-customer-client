@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import NotFoundPage from '../views/NotFoundPage.vue'
 import Cart from '../views/Cart.vue'
+import EditQuantity from '../components/EditQuantity.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: Cart
+  },
+  {
+    path: '/edit/:id',
+    name: 'EditQuantity',
+    component: EditQuantity
   },
   {
     path: '/about',
