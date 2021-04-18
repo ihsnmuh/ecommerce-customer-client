@@ -56,4 +56,19 @@ const router = new VueRouter({
   routes
 })
 
+// Navigation Guard Router Global
+router.beforeEach((to, from, next) => {
+  if (to.name === 'Login' && localStorage.access_token) {
+    next({ name: 'Home' })
+  } else if (to.name === 'Register' && localStorage.access_token) {
+    next({ name: 'Home' })
+  } else if (to.name === 'Home' && !localStorage.access_token) {
+    next({ name: 'Login' })
+  } else if (to.name === 'Cart' && !localStorage.access_token) {
+    next({ name: 'Login' })
+  } else {
+    next()
+  }
+})
+
 export default router

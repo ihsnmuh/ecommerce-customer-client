@@ -168,6 +168,11 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
+    },
+
+    logout (context) {
+      localStorage.removeItem('access_token')
+      router.push('/login')
     }
   },
   modules: {

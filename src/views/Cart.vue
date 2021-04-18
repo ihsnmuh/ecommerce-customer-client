@@ -5,6 +5,7 @@
         <div class="text-center mt-4">
             <h1 style="font-weight: bold; color:white">Your Cart</h1>
             <hr class="garis">
+          <button class="btn btn-danger mb-2" @click.prevent="toHomePage"> Back Home</button>
         </div>
         <div class="col">
             <!-- Tabel Product -->
@@ -52,6 +53,10 @@ export default {
   methods: {
     fetchCartItems () {
       this.$store.dispatch('fetchCartItems')
+    },
+
+    toHomePage () {
+      this.$router.push('/').catch(() => {})
     }
   }
 
