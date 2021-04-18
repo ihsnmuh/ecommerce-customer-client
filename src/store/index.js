@@ -92,7 +92,7 @@ export default new Vuex.Store({
     deleteCart (context, payload) {
       console.log(payload.id, '<<<<< ID Cart yang mau didelete')
       axios
-        .delete(`/carts/${payload.id}`, payload, {
+        .delete(`/carts/${payload.id}`, {
           headers: {
             access_token: localStorage.access_token
           }
