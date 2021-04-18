@@ -109,6 +109,24 @@ export default new Vuex.Store({
         })
     },
 
+    AddOnetoCard (context, payload) {
+      console.log(payload.id, '<<<<<<<< Produk yang di Add')
+      axios.post(`/carts/${payload.id}`, payload, {
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          console.log(data)
+          console.log('Produk berhasil ditambahkan')
+          context.dispatch('fetchCartItems')
+          router.push('/cart').catch(() => {})
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
     deleteCart (context, payload) {
       console.log(payload.id, '<<<<< ID Cart yang mau didelete')
       axios

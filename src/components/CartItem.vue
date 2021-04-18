@@ -13,11 +13,14 @@
         <td>{{cartitem.quantity}}</td>
         <td>{{cartitem.quantity * cartitem.Product.price}}</td>
         <td>
+            <button class="btn btn-success btn-sm" @click.prevent="addCart">
+            <i class="bi bi-plus-circle"></i>
+            </button>
             <button class="btn btn-dark btn-sm" @click.prevent="editQuantityCart">
-            <i class="bi bi-pencil-square"></i> Edit Quantity
+            <i class="bi bi-pencil-square"></i>
             </button><br>
             <button class="btn btn-danger btn-sm" @click.prevent="deleteCart">
-            <i class="bi bi-trash-fill"></i> Delete Items
+            <i class="bi bi-trash-fill"></i>
             </button>
         </td>
     </tr>
@@ -36,6 +39,9 @@ export default {
     },
     editQuantityCart () {
       this.$router.push(`/edit/${this.cartitem.id}`)
+    },
+    addCart () {
+      this.$store.dispatch('AddOnetoCard', this.cartitem.Product)
     }
   }
 }
