@@ -9,9 +9,9 @@
             >
         </td>
         <td>{{cartitem.Product.name}}</td>
-        <td>{{cartitem.Product.price}}</td>
+        <td>Rp. {{convertRupiah(cartitem.Product.price)}}</td>
         <td>{{cartitem.quantity}}</td>
-        <td>{{cartitem.quantity * cartitem.Product.price}}</td>
+        <td>Rp. {{convertRupiah(cartitem.quantity * cartitem.Product.price)}}</td>
         <td>
             <button class="btn btn-success btn-sm" @click.prevent="addCart">
             <i class="bi bi-plus-circle"></i>
@@ -42,6 +42,9 @@ export default {
     },
     addCart () {
       this.$store.dispatch('AddOnetoCard', this.cartitem.Product)
+    },
+    convertRupiah (value) {
+      return value.toLocaleString('id-ID')
     }
   }
 }
