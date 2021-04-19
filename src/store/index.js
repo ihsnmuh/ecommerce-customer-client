@@ -310,6 +310,13 @@ export default new Vuex.Store({
         })
         .catch(err => {
           console.log(err)
+
+          // Sweetalert
+          Swal.fire({
+            icon: 'error',
+            title: 'Please correctly',
+            text: `${err.response.data.message}`
+          })
         })
     },
 
